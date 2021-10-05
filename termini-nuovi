@@ -4,3 +4,8 @@ list comprehention : meccanismo attraverso il quale costruiamo una lista scriven
 ]]input e output
 una funzione puo avere nessun o piu argomenti (o parametri); valori di ingresso su cui avviene la funzione.
 dopo che le istruzioni sono state processate la funzione puo avere anche dei valori di output
+
+05/10
+ map : funzione che applica a ogni elemento di una lista una funzione 
+ 
+ pow(,) primo valore 
