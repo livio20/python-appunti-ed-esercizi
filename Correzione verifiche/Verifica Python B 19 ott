@@ -1,0 +1,75 @@
+Verifica Python B 19 ott
+1) Scrivere un programma che permetta di convertire un peso da kg in libbre. L’utente inserisce il peso in kg e il programma calcola il peso corrispondente nell’altra unità di misura.
+
+kg = float(input('inserire il peso in kg da convertire in libbre: '))
+libbre = kg * 2.2046
+print(kg, 'kg =', libbre,'libbre')
+
+2) Scrivere un programma che permetta di verificare se un indirizzo mail contiene il carattere @. L’utente inserisce l’indirizzo e il programma restituisce il messaggio “indirizzo corretto” se il carattere è presente” o “indirizzo errato” se il carattere non è presente. Il carattere @ non può essere presente in prima o ultima posizione.
+
+mail = input('Inserisci un indirizzo email: ')
+
+if list(mail)[0] != '@' and list(mail)[-1] != '@' and mail.count('@') != 0:
+  print('Indirizzo corretto')
+else:
+  print('Indirizzo errato')
+
+3)
+
+n = int(input('Inserisci un numero: '))
+
+res = ''
+for num in range(1, n+1):
+  res+= '{} ({}:{}), '.format(round(1/num, 2), 1, num)
+
+print(res)
+
+4)
+
+l = [n for n in range(0, 101) if n%2 == 1]
+
+print(l[-10:])
+
+5)
+
+l = l[:-10]
+
+print(l)
+
+6)
+
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+def swap_pos(li):
+  for n in [num for num in range(len(l)//2+(len(l)//4)+2) if num%2 == 0]:
+    li[n], li[n+1] = li[n+1], li[n]
+
+  return li
+
+print(swap_pos(l))
+
+7)
+
+regioni = {'Abruzzo': {'capoluogo': 'Aquila', 'abitanti': 69605}, 'Basilicata': {'capoluogo': 'Potenza', 'abitanti': 562869}, 'Calabria': {'capoluogo': 'Catanzaro', 'abitanti': 1947000}}
+
+req = input('Insceri il nome di una regione: ')
+
+print('Capoluogo: {}\nPopolazione: {} abitanti'.format(regioni[req]['capoluogo'], regioni[req]['abitanti']))
+
+8)
+
+l = input('Inserisci una lista: ').split(',')
+
+res = list(filter(lambda x: (int(x)%2 == 0), l))
+
+print(res)
+
+9)
+
+n = int(input('Inserisci un numero: '))
+
+res = 0
+for num in range(n+1):
+  res+=num
+
+print(res)
