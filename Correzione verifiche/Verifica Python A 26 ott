@@ -1,0 +1,107 @@
+1)Scrivere un programma che calcoli il volume di un parallelepipedo data la base, l’altezza e la profondità. I valori inseriti possono essere decimali e il risultato deve essere fornito con due cifre decimali. I valori della base, dell’altezza e della profondità devono essere inseriti dall’utente
+
+a = float(input('Inserisci la lunghezza della base: '))
+b = float(input('Inserisci la lunghezza della profondità: '))
+h = float(input('Inserisci la lunghezza dell\'altezza: '))
+
+print('Volume del parallelepipedo: {}cm'.format(round(a*b*h, 2)))
+
+2)Modificare il programma precedente in modo che prima di effettuare il calcolo controlli che i valori inseriti dall’utente siano positivi. Visualizzare gli opportuni messaggi di errore a seconda del verificarsi delle diverse condizioni
+
+a = float(input('Inserisci la lunghezza della base: '))
+b = float(input('Inserisci la lunghezza della profondità: '))
+h = float(input('Inserisci la lunghezza dell\'altezza: '))
+
+def check_val(val, val_name):
+  if val < 0:
+    return print('ERRORE: il valore \'{}\' è negativo'.format(val_name))
+  else:
+    return True
+
+if check_val(a, 'base') == True and check_val(b, 'profondità') == True and check_val(h, 'altezza') == True:
+  print('Volume del parallelepipedo: {}cm'.format(round(a*b*h, 2)))
+
+3) Scrivere un programma che permetta di visualizzare tutti i quadrati perfetti minori di un numero intero inserito dall’utente. I quadrati perfetti sono numeri interi che possono essere espressi come il quadrato di un numero intero. Ad esempio 9 è un quadrato perfetto perché è il quadrato del numero intero 3 mentre 8 non è un quadrato perfetto perché non è il quadrato di nessun numero intero)
+
+from math import sqrt
+
+num = int(input('Inserisci un numero: '))
+
+l = [str(n) for n in range(num) if int(sqrt(n) + 0.5) ** 2 == n]
+
+print(', '.join(l))
+
+4)Scrivere un programma che inserisca in una lista tutti i numeri interi compresi tra due estremi forniti dall’utente. Al termine, visualizzare la lista dei numeri e la lista al contrario
+
+n_min = int(input('Inserisci un numero: '))
+n_max = int(input('Inserisci un numero: '))
+
+l = [n for n in range(n_min, n_max + 1)]
+l.reverse()
+
+print(l)
+
+5)5. Scrivere un programma che carichi in una lista chiamata “tutti” i numeri pari compresi tra -30 e +30. Usando poi lo slicing, caricare in una lista chiamata “negativi” gli elementi della lista “tutti” minori di 0 e in una chiamata “positivi” gli elementi della lista “tutti” maggiori di zero. Al termine visualizzare le tre liste..
+
+tutti = [n for n in range(-30, 31)]
+negativi = tutti[:len(tutti)//2]
+positivi = tutti[len(tutti)//2:]
+
+print('Numeri: {}\nNegativi: {}\nPositivi: {}'.format(tutti, negativi, positivi))
+
+6) Scrivere una funzione chiamata volumeSfera che dato il raggio in metri di una sfera calcoli il suo volume. Utilizzare poi quella funzione per scrivere un’altra funzione chiamata pesoSfera che permetta di calcolare il peso di una sfera dato il suo raggio in metri e la sua densità, espressa in grammi al centimetro cubo. Infine, scrivere un programma che calcoli il peso di una sfera di piombo del raggio di un metro (la densità del piombo è di 11.34 g/cm3)
+
+from math import pi
+
+r = 1 * 100  # m => cm
+d = 11.34
+
+def volume_sfera(ra):
+  return (4/3) * pi * ra**3
+
+def peso_sfera(p):
+  return p * volume_sfera(r)
+
+print('Il peso della sfera è di: {}kg'.format(round(peso_sfera(d) / 1000, 2)))
+
+7) Data una lista di 100 numeri pari casuali caricata tramite una list comprehension, sostituire ogni elemento con il suo quadrato
+
+from random import randrange as rn
+
+l = [rn(2,100,2) for _ in range(100)]
+l = list(map(lambda n: n**2, l))
+
+8)Data una lista di 100 numeri pari casuali caricata tramite una list comprehension, eliminare tutti gli elementi della lista che sono multipli di 6
+
+from random import randrange as rn
+
+l = [rn(2,100,2) for _ in range(100)]
+
+l = list(filter(lambda x: x%6 == 1, l))
+# Oppure
+
+for n in l:
+  if n%6 == 0:
+    l.remove(n)
+
+9)Progettare una struttura dati che permetta di memorizzare l’orario di partenza e di arrivo dei treni della tratta Milano Roma dell’alta velocità. Ad esempio il treno 9645 parte alle 16.00 e arriva alle 19.10, il treno 9647 parte alle 16.30 e arriva alle 19.40 a Roma. Memorizzare nella struttura dati progettata queste informazioni e scrivere il codice necessario per cercare un treno ed avere l’ora di partenza e l’ora di arrivo. Se non c’è il treno che l’utente inserisce, dare un opportuno messaggio di errore.
+
+
+trains = {
+  '9645': {
+    'partenza': '16.00',
+    'arrivo': '19.10'
+  },
+  '9647': {
+    'partenza': '16.30',
+    'arrivo': '19.40'
+  }
+}
+
+tr = input('Inserisci il codice treno: ')
+
+if tr in trains.keys():
+  print('Partenza: {}\nArrivo: {}'.format(trains[tr]['partenza'], trains[tr]['arrivo']))
+else:
+  print('Treno non trovato!')
+
